@@ -103,7 +103,7 @@
 
 ## 🔗 Connect with Me
 <p align="center">
-  <a href="www.linkedin.com/in/dhruv-kumar-singh-a01700364">
+  <a href="https://www.linkedin.com/in/dhruv-kumar-singh-a01700364">
     <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/LinkedIN.svg" alt="LinkedIn" width="40" />
   </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://x.com/DhruvKrSingh_07">
