@@ -4,11 +4,6 @@
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=4000&pause=1000&color=00FF41&center=true&vCenter=true&width=650&lines=Full-Stack%20Development;Data%20Science%20%26%20ML;Database%20Management;Open-Source%20Contributor" alt="Typing introduction" />
 </p>
 
-<p align="center">
-  <a href="https://komarev.com/ghpvc/?username=Dhruv-Kumar-Singh">
-    <img src="https://komarev.com/ghpvc/?username=Dhruv-Kumar-Singh&label=Profile%20views&color=00FFFF&style=flat-square" alt="Dhruv-Kumar-Singh's profile views" />
-  </a>
-</p>
 
 <img src="https://i.pinimg.com/originals/ad/fc/cd/adfccd6a72515359c1c283f912b67616.gif" alt="Banner" width="100%" />
 
