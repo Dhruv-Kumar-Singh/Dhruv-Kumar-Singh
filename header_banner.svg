@@ -1,0 +1,161 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0000"/>
+      <stop offset="50%" style="stop-color:#1a0000"/>
+      <stop offset="100%" style="stop-color:#0a0000"/>
+    </linearGradient>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      @keyframes pulse { 0%,100%{opacity:0.7} 50%{opacity:1} }
+      @keyframes fall1 { 0%{transform:translateY(-120px)} 100%{transform:translateY(220px)} }
+      @keyframes fall2 { 0%{transform:translateY(-80px)}  100%{transform:translateY(220px)} }
+      @keyframes fall3 { 0%{transform:translateY(-150px)} 100%{transform:translateY(220px)} }
+      @keyframes fall4 { 0%{transform:translateY(-60px)}  100%{transform:translateY(220px)} }
+      @keyframes fall5 { 0%{transform:translateY(-100px)} 100%{transform:translateY(220px)} }
+      @keyframes scanline { 0%{transform:translateY(-10px);opacity:0.3} 100%{transform:translateY(210px);opacity:0} }
+
+      .col1  { animation: fall1 3.2s linear infinite; }
+      .col2  { animation: fall2 2.8s linear infinite 0.5s; }
+      .col3  { animation: fall3 3.5s linear infinite 1.0s; }
+      .col4  { animation: fall4 2.5s linear infinite 0.3s; }
+      .col5  { animation: fall5 3.8s linear infinite 1.5s; }
+      .col6  { animation: fall1 2.9s linear infinite 0.8s; }
+      .col7  { animation: fall2 3.3s linear infinite 0.2s; }
+      .col8  { animation: fall3 2.7s linear infinite 1.2s; }
+      .col9  { animation: fall4 3.6s linear infinite 0.6s; }
+      .col10 { animation: fall5 3.1s linear infinite 1.8s; }
+      .col11 { animation: fall1 2.6s linear infinite 0.4s; }
+      .col12 { animation: fall2 3.4s linear infinite 1.1s; }
+
+      .mc-head   { font-family:"Courier New",monospace; font-size:11px; fill:#ff4444; }
+      .mc-bright { font-family:"Courier New",monospace; font-size:11px; fill:#cc0000; }
+      .mc-mid    { font-family:"Courier New",monospace; font-size:11px; fill:#880000; }
+      .mc-dim    { font-family:"Courier New",monospace; font-size:11px; fill:#3a0000; }
+
+      .scanline { animation: scanline 4s linear infinite; }
+      .name-pulse { animation: pulse 2s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <rect width="800" height="200" fill="url(#bg)"/>
+
+  <!-- Matrix rain left side -->
+  <g class="col1" transform="translate(15,0)">
+    <text y="0"  class="mc-head">1</text><text y="14" class="mc-bright">0</text>
+    <text y="28" class="mc-mid">1</text><text y="42" class="mc-mid">1</text>
+    <text y="56" class="mc-dim">0</text><text y="70" class="mc-dim">1</text>
+  </g>
+  <g class="col2" transform="translate(55,0)">
+    <text y="0"  class="mc-head">M</text><text y="14" class="mc-bright">E</text>
+    <text y="28" class="mc-mid">R</text><text y="42" class="mc-mid">N</text>
+    <text y="56" class="mc-dim">S</text><text y="70" class="mc-dim">T</text>
+  </g>
+  <g class="col3" transform="translate(95,0)">
+    <text y="0"  class="mc-head">G</text><text y="14" class="mc-bright">O</text>
+    <text y="28" class="mc-mid">L</text><text y="42" class="mc-mid">A</text>
+    <text y="56" class="mc-dim">N</text><text y="70" class="mc-dim">G</text>
+  </g>
+  <g class="col4" transform="translate(135,0)">
+    <text y="0"  class="mc-head">0</text><text y="14" class="mc-bright">1</text>
+    <text y="28" class="mc-mid">0</text><text y="42" class="mc-dim">1</text>
+    <text y="56" class="mc-dim">1</text><text y="70" class="mc-dim">0</text>
+  </g>
+  <g class="col5" transform="translate(175,0)">
+    <text y="0"  class="mc-head">N</text><text y="14" class="mc-bright">O</text>
+    <text y="28" class="mc-mid">D</text><text y="42" class="mc-mid">E</text>
+    <text y="56" class="mc-dim">J</text><text y="70" class="mc-dim">S</text>
+  </g>
+  <g class="col6" transform="translate(215,0)">
+    <text y="0"  class="mc-head">1</text><text y="14" class="mc-bright">1</text>
+    <text y="28" class="mc-mid">0</text><text y="42" class="mc-dim">1</text>
+    <text y="56" class="mc-dim">0</text>
+  </g>
+
+  <!-- Matrix rain right side -->
+  <g class="col7" transform="translate(565,0)">
+    <text y="0"  class="mc-head">R</text><text y="14" class="mc-bright">E</text>
+    <text y="28" class="mc-mid">A</text><text y="42" class="mc-mid">C</text>
+    <text y="56" class="mc-dim">T</text>
+  </g>
+  <g class="col8" transform="translate(605,0)">
+    <text y="0"  class="mc-head">0</text><text y="14" class="mc-bright">1</text>
+    <text y="28" class="mc-mid">1</text><text y="42" class="mc-dim">0</text>
+    <text y="56" class="mc-dim">1</text>
+  </g>
+  <g class="col9" transform="translate(645,0)">
+    <text y="0"  class="mc-head">M</text><text y="14" class="mc-bright">O</text>
+    <text y="28" class="mc-mid">N</text><text y="42" class="mc-mid">G</text>
+    <text y="56" class="mc-dim">O</text><text y="70" class="mc-dim">D</text>
+  </g>
+  <g class="col10" transform="translate(685,0)">
+    <text y="0"  class="mc-head">1</text><text y="14" class="mc-bright">0</text>
+    <text y="28" class="mc-mid">0</text><text y="42" class="mc-dim">1</text>
+    <text y="56" class="mc-dim">1</text>
+  </g>
+  <g class="col11" transform="translate(725,0)">
+    <text y="0"  class="mc-head">G</text><text y="14" class="mc-bright">O</text>
+    <text y="28" class="mc-mid">L</text><text y="42" class="mc-mid">A</text>
+    <text y="56" class="mc-dim">N</text>
+  </g>
+  <g class="col12" transform="translate(765,0)">
+    <text y="0"  class="mc-head">0</text><text y="14" class="mc-bright">1</text>
+    <text y="28" class="mc-mid">1</text><text y="42" class="mc-dim">0</text>
+  </g>
+
+  <!-- Circuit lines center -->
+  <g opacity="0.15" stroke="#ff0000" stroke-width="1" fill="none">
+    <line x1="280" y1="50"  x2="520" y2="50"/>
+    <line x1="280" y1="100" x2="520" y2="100"/>
+    <line x1="280" y1="150" x2="520" y2="150"/>
+    <line x1="300" y1="50"  x2="300" y2="100"/>
+    <line x1="400" y1="50"  x2="400" y2="150"/>
+    <line x1="500" y1="100" x2="500" y2="150"/>
+    <circle cx="300" cy="50"  r="3" fill="#ff0000"/>
+    <circle cx="400" cy="50"  r="3" fill="#ff0000"/>
+    <circle cx="500" cy="50"  r="3" fill="#ff0000"/>
+    <circle cx="300" cy="100" r="3" fill="#ff0000"/>
+    <circle cx="400" cy="100" r="3" fill="#ff0000"/>
+    <circle cx="500" cy="100" r="3" fill="#ff0000"/>
+    <circle cx="400" cy="150" r="3" fill="#ff0000"/>
+    <circle cx="500" cy="150" r="3" fill="#ff0000"/>
+  </g>
+
+  <!-- Dark overlay behind name -->
+  <rect x="250" y="20" width="300" height="160" fill="#0d0000" opacity="0.80" rx="6"/>
+
+  <!-- Scanline -->
+  <rect class="scanline" x="0" y="0" width="800" height="3" fill="#ff0000" opacity="0.07"/>
+
+  <!-- Name -->
+  <text x="400" y="92" text-anchor="middle"
+    font-family="'Courier New',monospace"
+    font-size="46" font-weight="900"
+    fill="#ff1a1a"
+    filter="url(#softglow)"
+    letter-spacing="8"
+    class="name-pulse">SACHIN SINGH</text>
+
+  <!-- Subtitle -->
+  <text x="400" y="130" text-anchor="middle"
+    font-family="'Courier New',monospace"
+    font-size="13" fill="#ff6666" letter-spacing="5">BUGHUNTER · MERN · GOLANG · FULL STACK</text>
+
+  <!-- Frame lines -->
+  <line x1="255" y1="25"  x2="545" y2="25"  stroke="#ff0000" stroke-width="1" opacity="0.5"/>
+  <line x1="255" y1="175" x2="545" y2="175" stroke="#ff0000" stroke-width="1" opacity="0.5"/>
+  <line x1="255" y1="25"  x2="255" y2="175" stroke="#ff0000" stroke-width="1" opacity="0.5"/>
+  <line x1="545" y1="25"  x2="545" y2="175" stroke="#ff0000" stroke-width="1" opacity="0.5"/>
+
+  <!-- Corner accents -->
+  <polyline points="2,30 2,2 30,2"   stroke="#ff0000" stroke-width="2" fill="none"/>
+  <polyline points="770,2 798,2 798,30"   stroke="#ff0000" stroke-width="2" fill="none"/>
+  <polyline points="2,170 2,198 30,198"   stroke="#ff0000" stroke-width="2" fill="none"/>
+  <polyline points="770,198 798,198 798,170" stroke="#ff0000" stroke-width="2" fill="none"/>
+
+  <!-- Outer border -->
+  <rect x="1" y="1" width="798" height="198" fill="none" stroke="#ff0000" stroke-width="1.5" rx="8" opacity="0.35"/>
+</svg>
