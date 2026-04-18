@@ -1,4 +1,7 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&customColorList=6,11,20,29&text=Dhruv%20Kumar%20Singh&fontSize=48&fontColor=fff&animation=twinkling&fontAlignY=35&textBg=false"/>
+
+<div align="center">
+<img src="Banner.svg" alt="Dhruv banner" width="800"/>
+</div>
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=4000&pause=1000&color=00FF41&center=true&vCenter=true&width=650&lines=Full-Stack%20Development;Data%20Science%20%26%20ML;Database%20Management;Open-Source%20Contributor" alt="Typing introduction" />
