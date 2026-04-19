@@ -16,9 +16,22 @@
 - Database Management: Skilled in designing and managing structured and unstructured data using SQL and MongoDB 💾.
 - Software Engineering: Solid understanding of core programming principles in Java and Python to build scalable, efficient, and maintainable software solutions ⚙️.
 
+## 🔗 Connect with Me
+<p align="center">
+  <a href="https://www.linkedin.com/in/dhruv-kumar-singh-a01700364">
+    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/LinkedIN.svg" alt="LinkedIn" width="40" />
+  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://x.com/DhruvKrSingh_07">
+    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/Twitter.svg" alt="Twitter" width="40" />
+  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="mailto:dhruvkumarsingh327@gmail.com">
+    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/Gmail.svg" alt="Gmail" width="40" />
+  </a>
+</p>
+
 
 ## 📊 GitHub Stats & Trophies
-<p align="center">
+<!-- <p align="center">
   <a href="https://github.com/Dhruv-Kumar-Singh">
     <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=Dhruv-Kumar-Singh&cache_seconds=7200&layout=compact&theme=dracula&border_radius=10" alt="Dhruv-Kumar-Singh's GitHub Stats" />
   </a>
@@ -32,7 +45,7 @@
 </p>
 <div align="center">
   <img src="profile-3d-city.svg" alt="3D City" width="100%" />
-</div>
+</div> -->
 
 
 ## 🛠️ Languages & Tools
@@ -101,18 +114,7 @@
 ![Top language](https://stats.pphat.top/languages?username=Dhruv-Kumar-Singh)
 <br/>
 
-## 🔗 Connect with Me
-<p align="center">
-  <a href="https://www.linkedin.com/in/dhruv-kumar-singh-a01700364">
-    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/LinkedIN.svg" alt="LinkedIn" width="40" />
-  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://x.com/DhruvKrSingh_07">
-    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/Twitter.svg" alt="Twitter" width="40" />
-  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="mailto:dhruvkumarsingh327@gmail.com">
-    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/Gmail.svg" alt="Gmail" width="40" />
-  </a>
-</p>
+
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/czl9707/gh-space-shooter/main/example.gif" alt="Space shooter contribution graph" />
