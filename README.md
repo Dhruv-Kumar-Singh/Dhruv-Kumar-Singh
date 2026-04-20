@@ -29,8 +29,6 @@
   </a>
 </p>
 
-
-## 📊 GitHub Stats & Trophies
 <!-- <p align="center">
   <a href="https://github.com/Dhruv-Kumar-Singh">
     <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=Dhruv-Kumar-Singh&cache_seconds=7200&layout=compact&theme=dracula&border_radius=10" alt="Dhruv-Kumar-Singh's GitHub Stats" />
