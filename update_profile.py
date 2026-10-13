@@ -215,14 +215,62 @@ def graphql(query: str, variables: dict) -> dict | None:
         return None
 
 
+def fetch_public_fallback_data() -> dict | None:
+    user_info = api(f"/users/{USER}") or {}
+    name = user_info.get("name") or USER
+    followers = user_info.get("followers", 0)
+
+    raw = http(f"https://github-contributions-api.jogruber.de/v4/{USER}?y=last")
+    weeks = []
+    total_contribs = 0
+    if raw:
+        try:
+            cdata = json.loads(raw)
+            total_contribs = cdata.get("total", {}).get("lastYear", 0)
+            items = cdata.get("contributions", [])
+            cur_week = []
+            for item in items:
+                cur_week.append({
+                    "contributionCount": item.get("count", 0),
+                    "date": item.get("date", ""),
+                })
+                if len(cur_week) == 7:
+                    weeks.append({"contributionDays": cur_week})
+                    cur_week = []
+            if cur_week:
+                weeks.append({"contributionDays": cur_week})
+        except Exception as e:
+            print(f"Fallback contributions parsing failed: {e}", file=sys.stderr)
+
+    return {
+        "name": name,
+        "followers": {"totalCount": followers},
+        "contributionsCollection": {
+            "totalCommitContributions": total_contribs,
+            "totalPullRequestContributions": 0,
+            "totalIssueContributions": 0,
+            "contributionCalendar": {
+                "totalContributions": total_contribs,
+                "weeks": weeks,
+            },
+        },
+        "pullRequests": {"totalCount": 0},
+        "issues": {"totalCount": 0},
+    }
+
+
 def fetch_contribution_data() -> dict | None:
     now        = datetime.now(timezone.utc)
     year_ago   = now - timedelta(days=365)
-    return graphql(GQL_CONTRIBUTIONS, {
+    data = graphql(GQL_CONTRIBUTIONS, {
         "login": USER,
         "from":  year_ago.strftime("%Y-%m-%dT00:00:00Z"),
         "to":    now.strftime("%Y-%m-%dT%H:%M:%SZ"),
     })
+    if data:
+        return data
+    print("Using public fallback endpoint for contribution calendar and stats.", file=sys.stderr)
+    return fetch_public_fallback_data()
 
 
 # ---------------------------------------------------------------------------
@@ -451,10 +499,10 @@ def build_stats_card_svg(gql_user: dict | None, repos: list[dict], total_merged:
 
     cc      = (gql_user or {}).get("contributionsCollection", {})
     commits = cc.get("totalCommitContributions", 0)
-    prs_merged = (gql_user or {}).get("pullRequests", {}).get("totalCount", total_merged)
+    prs_merged = (gql_user or {}).get("pullRequests", {}).get("totalCount") or total_merged
     issues  = (gql_user or {}).get("issues", {}).get("totalCount", 0)
     followers = (gql_user or {}).get("followers", {}).get("totalCount", 0)
-    stars   = sum(r.get("stargazerCount", 0) for r in repos)
+    stars   = sum(r.get("stargazers_count", 0) or r.get("stargazerCount", 0) for r in repos)
     n_repos = len([r for r in repos if not r.get("fork") and not r.get("archived")])
 
     name    = escape((gql_user or {}).get("name") or USER)
@@ -521,9 +569,9 @@ def build_streak_svg(weeks: list[dict]) -> str:
 
     panels = [
         ("🔥", "Total Contributions", _fmt(total), "This Year"),
-        ("📅", "Current Streak",       str(current) + " days",
+        ("📅", "Current Streak",       f"{current} day{'s' if current != 1 else ''}",
          f"{start_label} – {end_label}" if current else "No active streak"),
-        ("🏅", "Longest Streak",       str(longest) + " days", "All time"),
+        ("🏅", "Longest Streak",       f"{longest} day{'s' if longest != 1 else ''}", "All time"),
     ]
 
     col_w = (W - 2*PAD - 24) / 3
@@ -643,10 +691,10 @@ def build_activity_graph_svg(weeks: list[dict]) -> str:
 def build_trophies_svg(gql_user: dict | None, repos: list[dict], total_merged: int) -> str:
     cc      = (gql_user or {}).get("contributionsCollection", {})
     commits = cc.get("totalCommitContributions", 0)
-    prs     = (gql_user or {}).get("pullRequests", {}).get("totalCount", total_merged)
+    prs     = (gql_user or {}).get("pullRequests", {}).get("totalCount") or total_merged
     issues  = (gql_user or {}).get("issues", {}).get("totalCount", 0)
     followers = (gql_user or {}).get("followers", {}).get("totalCount", 0)
-    stars   = sum(r.get("stargazerCount", 0) for r in repos)
+    stars   = sum(r.get("stargazers_count", 0) or r.get("stargazerCount", 0) for r in repos)
     n_repos = len([r for r in repos if not r.get("fork") and not r.get("archived")])
 
     trophies = [

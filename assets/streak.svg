@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 155" width="800" height="155" role="img" aria-label="Dhruv-Kumar-Singh&#x27;s GitHub Streak"><style>
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+*{font-family:"Fira Code","SFMono-Regular",Consolas,"Liberation Mono",monospace}
+.panel{fill:#0d1117;stroke:#00ff41;stroke-opacity:.35}
+.title{fill:#00ff41;font-size:14px;font-weight:600}
+.cat{fill:#00ff41;font-size:12.5px;font-weight:600}
+.muted{fill:#8b949e;font-size:10.5px}
+.lbl{fill:#8b949e;font-size:10.5px;text-anchor:middle}
+.val{fill:#e6edf3;font-size:22px;font-weight:700;text-anchor:middle}
+.sub{fill:#8b949e;font-size:10px;text-anchor:middle}
+.tile{fill:#161b22;stroke:#30363d}
+.tile.live{stroke:#00ff41;animation:glow 2.4s ease-in-out infinite alternate}
+.dot{fill:#00ff41;animation:pulse 1.6s ease-in-out infinite}
+.cursor{fill:#00ff41;animation:blink 1s steps(1) infinite}
+.enter{opacity:0;animation:enter .6s ease-out forwards}
+.float{animation:float 3.2s ease-in-out infinite}
+.white{filter:brightness(0) invert(1)}
+.big{fill:#00ff41;font-size:28px;font-weight:700;text-anchor:middle}
+.card{fill:#161b22;stroke:#00ff41;stroke-opacity:.4;animation:glow 3s ease-in-out infinite alternate}
+.bar-bg{fill:#161b22}
+.bar-label{fill:#c9d1d9;font-size:12.5px;font-weight:600}
+.bar-pct{font-size:11px;font-weight:600}
+.streak-val{fill:#00ff41;font-size:32px;font-weight:700;text-anchor:middle}
+.streak-lbl{fill:#8b949e;font-size:11px;text-anchor:middle}
+.streak-sub{fill:#e6edf3;font-size:10px;text-anchor:middle}
+.stat-val{fill:#00ff41;font-size:24px;font-weight:700;text-anchor:middle}
+.stat-lbl{fill:#8b949e;font-size:10px;text-anchor:middle}
+.stat-icon{font-size:18px;text-anchor:middle}
+.trophy-val{font-size:20px;font-weight:700;text-anchor:middle}
+.trophy-lbl{fill:#8b949e;font-size:9.5px;text-anchor:middle}
+.trophy-tier{font-size:9px;font-weight:600;text-anchor:middle}
+.shimmer{animation:shimmer 2s ease-in-out infinite}
+@keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes glow{from{stroke-opacity:.3}to{stroke-opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes shimmer{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes countin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important}}
+</style><rect class="panel" x="0.5" y="0.5" width="799" height="154" rx="14"/><g class="enter" style="animation-delay:0.0s"><rect x="28.0" y="8" width="240.0" height="139" rx="10" fill="#161b22" stroke="#6e7681" stroke-opacity=".5"/><text font-size="22" text-anchor="middle" x="148.0" y="42">🔥</text><text font-size="10" fill="#8b949e" text-anchor="middle" x="148.0" y="56">Total Contributions</text><text class="streak-val" fill="#6e7681" x="148.0" y="92">72</text><text class="streak-sub" x="148.0" y="112">This Year</text></g><g class="enter" style="animation-delay:0.1s"><rect x="280.0" y="8" width="240.0" height="139" rx="10" fill="#161b22" stroke="#00ff41" stroke-opacity=".5"/><text font-size="22" text-anchor="middle" x="400.0" y="42">📅</text><text font-size="10" fill="#8b949e" text-anchor="middle" x="400.0" y="56">Current Streak</text><text class="streak-val" fill="#00ff41" x="400.0" y="92">1 day</text><text class="streak-sub" x="400.0" y="112">Oct 12 – Oct 13</text></g><g class="enter" style="animation-delay:0.3s"><rect x="532.0" y="8" width="240.0" height="139" rx="10" fill="#161b22" stroke="#ffd700" stroke-opacity=".5"/><text font-size="22" text-anchor="middle" x="652.0" y="42">🏅</text><text font-size="10" fill="#8b949e" text-anchor="middle" x="652.0" y="56">Longest Streak</text><text class="streak-val" fill="#ffd700" x="652.0" y="92">3 days</text><text class="streak-sub" x="652.0" y="112">All time</text></g><line x1="274.0" y1="20" x2="274.0" y2="135" stroke="#21262d" stroke-width="1"/><line x1="526.0" y1="20" x2="526.0" y2="135" stroke="#21262d" stroke-width="1"/></svg>
