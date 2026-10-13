@@ -433,10 +433,9 @@ def trophy_tier(value: int) -> tuple[str, str]:
 # Shared SVG constants
 # ---------------------------------------------------------------------------
 
-FONT = "font-family:\"Fira Code\",\"SFMono-Regular\",Consolas,\"Liberation Mono\",monospace"
+FONT = "font-family:Consolas,\"SFMono-Regular\",\"Liberation Mono\",Menlo,monospace"
 
 BASE_CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
 *{{{FONT}}}
 .panel{{fill:#0d1117;stroke:#00ff41;stroke-opacity:.35}}
 .title{{fill:#00ff41;font-size:14px;font-weight:600}}

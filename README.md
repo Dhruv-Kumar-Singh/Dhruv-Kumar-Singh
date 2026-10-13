@@ -1,6 +1,6 @@
 
 <div align="center">
-<img src="Banner.svg" alt="Dhruv banner" width="800"/>
+<img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/Banner.svg" alt="Dhruv banner" width="800"/>
 </div>
 
 <p align="center">
@@ -18,13 +18,13 @@
 ## 🔗 Connect with Me
 <p align="center">
   <a href="https://www.linkedin.com/in/dhruv-kumar-singh-a01700364">
-    <img src="assets/social-linkedin.svg" alt="LinkedIn" width="64" />
+    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/social-linkedin.svg" alt="LinkedIn" width="64" />
   </a>&nbsp;&nbsp;
   <a href="https://x.com/DhruvKrSingh_07">
-    <img src="assets/social-twitter.svg" alt="Twitter/X" width="64" />
+    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/social-twitter.svg" alt="Twitter/X" width="64" />
   </a>&nbsp;&nbsp;
   <a href="mailto:dhruvkumarsingh327@gmail.com">
-    <img src="assets/social-gmail.svg" alt="Gmail" width="64" />
+    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/social-gmail.svg" alt="Gmail" width="64" />
   </a>
 </p>
 
@@ -33,21 +33,21 @@
 ## 📊 GitHub Stats & Activity
 
 <p align="center">
-  <img src="assets/stats-card.svg" alt="GitHub Stats" width="100%" />
+  <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/stats-card.svg" alt="GitHub Stats" width="100%" />
 </p>
 
 <p align="center">
-  <img src="assets/streak.svg" alt="GitHub Streak" width="100%" />
+  <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/streak.svg" alt="GitHub Streak" width="100%" />
 </p>
 
 ### 🔥 Contribution Activity
 <p align="center">
-  <img src="assets/activity-graph.svg" alt="Contribution Activity Graph" width="100%" />
+  <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/activity-graph.svg" alt="Contribution Activity Graph" width="100%" />
 </p>
 
 ### 🏆 GitHub Trophies
 <p align="center">
-  <img src="assets/trophies.svg" alt="GitHub Trophies" width="100%" />
+  <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/trophies.svg" alt="GitHub Trophies" width="100%" />
 </p>
 
 ### 📅 Real-Time Commit Graph
@@ -59,10 +59,10 @@
 
 ## 🛠️ Languages & Tools
 
-<img src="assets/tech-stack.svg" alt="Animated tech stack" width="100%" />
+<img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/tech-stack.svg" alt="Animated tech stack" width="100%" />
 
 ### 📈 Language Distribution
-<img src="assets/languages.svg" alt="Language distribution" width="100%" />
+<img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/languages.svg" alt="Language distribution" width="100%" />
 
 ---
 
@@ -104,7 +104,7 @@
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#2 Added all the files of the updated project](https://github.com/ipsitapp8/OJT/pull/2) | 2025-12-04 |
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#1 Deleted all the old files that were added previously added](https://github.com/ipsitapp8/OJT/pull/1) | 2025-12-04 |
 
-<sub>Auto-updated 2026-10-13 17:09 UTC</sub>
+<sub>Auto-updated 2026-10-13 11:48 UTC</sub>
 <!--OSS:END-->
 
 ---
