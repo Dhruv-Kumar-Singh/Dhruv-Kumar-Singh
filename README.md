@@ -1,4 +1,4 @@
-﻿
+
 <div align="center">
 <img src="Banner.svg" alt="Dhruv banner" width="800"/>
 </div>
@@ -6,7 +6,6 @@
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=4000&pause=1000&color=00FF41&center=true&vCenter=true&width=650&lines=Full-Stack%20Development;Data%20Science%20%26%20ML;Database%20Management;Open-Source%20Contributor;Cloud+%26+DevOps+Enthusiast" alt="Typing introduction" />
 </p>
-
 
 <img src="https://i.pinimg.com/originals/ad/fc/cd/adfccd6a72515359c1c283f912b67616.gif" alt="Banner" width="100%" />
 
@@ -34,26 +33,21 @@
 ## 📊 GitHub Stats & Activity
 
 <p align="center">
-  <a href="https://github.com/Dhruv-Kumar-Singh">
-    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=Dhruv-Kumar-Singh&show_icons=true&cache_seconds=3600&theme=dracula&border_radius=10&include_all_commits=true&count_private=true" alt="Dhruv-Kumar-Singh GitHub Stats" />
-  </a>
-  <a href="https://github.com/Dhruv-Kumar-Singh">
-    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Dhruv-Kumar-Singh&langs_count=8&layout=compact&theme=dracula&border_radius=10&cache_seconds=3600" alt="Top Languages" />
-  </a>
+  <img src="assets/stats-card.svg" alt="GitHub Stats" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com/?user=Dhruv-Kumar-Singh&theme=dracula&hide_border=false&border_radius=10&cache_seconds=3600" alt="Dhruv-Kumar-Singh GitHub Streak" width="60%" />
+  <img src="assets/streak.svg" alt="GitHub Streak" width="100%" />
 </p>
 
 ### 🔥 Contribution Activity
 <p align="center">
-  <img height="280em" src="https://github-readme-activity-graph.vercel.app/graph?username=Dhruv-Kumar-Singh&theme=dracula&radius=10&hide_border=false&area=true" alt="Dhruv-Kumar-Singh Activity Graph" />
+  <img src="assets/activity-graph.svg" alt="Contribution Activity Graph" width="100%" />
 </p>
 
 ### 🏆 GitHub Trophies
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Dhruv-Kumar-Singh&theme=dracula&no-frame=false&no-bg=true&margin-w=6&row=1&column=7&cache_seconds=3600" alt="Dhruv Kumar Singh GitHub Trophies" />
+  <img src="assets/trophies.svg" alt="GitHub Trophies" width="100%" />
 </p>
 
 ### 📅 Real-Time Commit Graph
@@ -69,9 +63,6 @@
 
 ### 📈 Language Distribution
 <img src="assets/languages.svg" alt="Language distribution" width="100%" />
-
-### 📋 Live Stats
-<img src="assets/stats.svg" alt="GitHub stats" width="100%" />
 
 ---
 
@@ -113,7 +104,7 @@
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#2 Added all the files of the updated project](https://github.com/ipsitapp8/OJT/pull/2) | 2025-12-04 |
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#1 Deleted all the old files that were added previously added](https://github.com/ipsitapp8/OJT/pull/1) | 2025-12-04 |
 
-<sub>Auto-updated 2026-10-13 16:46 UTC</sub>
+<sub>Auto-updated via GitHub Actions</sub>
 <!--OSS:END-->
 
 ---
