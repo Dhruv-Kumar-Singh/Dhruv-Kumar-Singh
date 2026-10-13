@@ -50,10 +50,6 @@
   <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/trophies.svg" alt="GitHub Trophies" width="100%" />
 </p>
 
-### 📅 Real-Time Commit Graph
-<p align="center">
-  <img src="https://ghchart.rshah.org/00FF41/Dhruv-Kumar-Singh" alt="Dhruv-Kumar-Singh GitHub commit chart" />
-</p>
 
 ---
 
