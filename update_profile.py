@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Regenerates the dynamic parts of the profile README from live GitHub data.
 
-Outputs
+Outputs (all inside the same directory as this script → assets/)
   assets/tech-stack.svg   animated icon grid (icons detected from your repos)
   assets/languages.svg    animated language bars (bytes across your repos)
   assets/stats.svg        animated stat cards
-  assets/social-*.svg     animated social icons
+  assets/social-gmail.svg / social-linkedin.svg / social-twitter.svg
+                          animated social icons (bounce + glow on hover, staggered)
   README.md               <!--OSS:START--> ... <!--OSS:END--> block (merged PRs)
 
 Env: GH_USER (default below), GITHUB_TOKEN (optional locally, provided in Actions).
@@ -25,71 +26,74 @@ from html import escape
 from pathlib import Path
 from urllib.request import Request, urlopen
 
-USER = os.environ.get("GH_USER", "Dhruv-Kumar-Singh")
-TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-ROOT = Path(__file__).resolve().parent.parent
+USER   = os.environ.get("GH_USER", "Dhruv-Kumar-Singh")
+TOKEN  = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+ROOT   = Path(__file__).resolve().parent      # same dir as this file
 ASSETS = ROOT / "assets"
 README = ROOT / "README.md"
 MAX_REPOS = 40
-DEVICON = "https://raw.githubusercontent.com/devicons/devicon/master/icons/"
+DEVICON   = "https://raw.githubusercontent.com/devicons/devicon/master/icons/"
 
-# ----------------------------------------------------------------------------
-# Icon catalog: slug -> (label, category, devicon folder, render as white silhouette)
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Icon catalog: slug → (label, category, devicon-folder, render-as-white)
+# ---------------------------------------------------------------------------
 CATALOG = {
-    "javascript": ("JavaScript", "Languages", "javascript", False),
-    "typescript": ("TypeScript", "Languages", "typescript", False),
-    "python": ("Python", "Languages", "python", False),
-    "java": ("Java", "Languages", "java", False),
-    "go": ("Go", "Languages", "go", False),
-    "c": ("C", "Languages", "c", False),
-    "cplusplus": ("C++", "Languages", "cplusplus", False),
-    "rust": ("Rust", "Languages", "rust", True),
-    "php": ("PHP", "Languages", "php", False),
-    "kotlin": ("Kotlin", "Languages", "kotlin", False),
-    "dart": ("Dart", "Languages", "dart", False),
-    "bash": ("Bash", "Languages", "bash", False),
-    "react": ("React", "Frontend", "react", False),
-    "nextjs": ("Next.js", "Frontend", "nextjs", False),
-    "html5": ("HTML5", "Frontend", "html5", False),
-    "css3": ("CSS3", "Frontend", "css3", False),
-    "tailwindcss": ("Tailwind", "Frontend", "tailwindcss", False),
-    "bootstrap": ("Bootstrap", "Frontend", "bootstrap", False),
-    "vitejs": ("Vite", "Frontend", "vitejs", False),
-    "nodejs": ("Node.js", "Backend", "nodejs", False),
-    "express": ("Express", "Backend", "express", True),
-    "django": ("Django", "Backend", "django", True),
-    "flask": ("Flask", "Backend", "flask", True),
-    "fastapi": ("FastAPI", "Backend", "fastapi", False),
-    "socketio": ("Socket.io", "Backend", "socketio", True),
-    "graphql": ("GraphQL", "Backend", "graphql", False),
-    "numpy": ("NumPy", "Data Science & ML", "numpy", False),
-    "pandas": ("Pandas", "Data Science & ML", "pandas", True),
+    "javascript":  ("JavaScript",   "Languages",         "javascript",  False),
+    "typescript":  ("TypeScript",   "Languages",         "typescript",  False),
+    "python":      ("Python",       "Languages",         "python",      False),
+    "java":        ("Java",         "Languages",         "java",        False),
+    "go":          ("Go",           "Languages",         "go",          False),
+    "c":           ("C",            "Languages",         "c",           False),
+    "cplusplus":   ("C++",          "Languages",         "cplusplus",   False),
+    "rust":        ("Rust",         "Languages",         "rust",        True),
+    "php":         ("PHP",          "Languages",         "php",         False),
+    "kotlin":      ("Kotlin",       "Languages",         "kotlin",      False),
+    "dart":        ("Dart",         "Languages",         "dart",        False),
+    "bash":        ("Bash",         "Languages",         "bash",        False),
+    "react":       ("React",        "Frontend",          "react",       False),
+    "nextjs":      ("Next.js",      "Frontend",          "nextjs",      False),
+    "html5":       ("HTML5",        "Frontend",          "html5",       False),
+    "css3":        ("CSS3",         "Frontend",          "css3",        False),
+    "tailwindcss": ("Tailwind",     "Frontend",          "tailwindcss", False),
+    "bootstrap":   ("Bootstrap",    "Frontend",          "bootstrap",   False),
+    "vitejs":      ("Vite",         "Frontend",          "vitejs",      False),
+    "nodejs":      ("Node.js",      "Backend",           "nodejs",      False),
+    "express":     ("Express",      "Backend",           "express",     True),
+    "django":      ("Django",       "Backend",           "django",      True),
+    "flask":       ("Flask",        "Backend",           "flask",       True),
+    "fastapi":     ("FastAPI",      "Backend",           "fastapi",     False),
+    "socketio":    ("Socket.io",    "Backend",           "socketio",    True),
+    "graphql":     ("GraphQL",      "Backend",           "graphql",     False),
+    "numpy":       ("NumPy",        "Data Science & ML", "numpy",       False),
+    "pandas":      ("Pandas",       "Data Science & ML", "pandas",      True),
     "scikitlearn": ("Scikit-Learn", "Data Science & ML", "scikitlearn", False),
-    "matplotlib": ("Matplotlib", "Data Science & ML", "matplotlib", False),
-    "seaborn": ("Seaborn", "Data Science & ML", "seaborn", False),
-    "tensorflow": ("TensorFlow", "Data Science & ML", "tensorflow", False),
-    "pytorch": ("PyTorch", "Data Science & ML", "pytorch", False),
-    "jupyter": ("Jupyter", "Data Science & ML", "jupyter", False),
-    "mysql": ("MySQL", "Database", "mysql", False),
-    "postgresql": ("PostgreSQL", "Database", "postgresql", False),
-    "mongodb": ("MongoDB", "Database", "mongodb", False),
-    "redis": ("Redis", "Database", "redis", False),
-    "firebase": ("Firebase", "Database", "firebase", False),
-    "prisma": ("Prisma", "Database", "prisma", True),
-    "googlecloud": ("Google Cloud", "DevOps & Cloud", "googlecloud", False),
-    "docker": ("Docker", "DevOps & Cloud", "docker", False),
-    "kubernetes": ("Kubernetes", "DevOps & Cloud", "kubernetes", False),
-    "linux": ("Linux", "DevOps & Cloud", "linux", False),
-    "git": ("Git", "Tools", "git", False),
-    "github": ("GitHub", "Tools", "github", True),
-    "vscode": ("VS Code", "Tools", "vscode", False),
-    "figma": ("Figma", "Tools", "figma", False),
-    "postman": ("Postman", "Tools", "postman", False),
+    "matplotlib":  ("Matplotlib",   "Data Science & ML", "matplotlib",  False),
+    "seaborn":     ("Seaborn",      "Data Science & ML", "seaborn",     False),
+    "tensorflow":  ("TensorFlow",   "Data Science & ML", "tensorflow",  False),
+    "pytorch":     ("PyTorch",      "Data Science & ML", "pytorch",     False),
+    "jupyter":     ("Jupyter",      "Data Science & ML", "jupyter",     False),
+    "mysql":       ("MySQL",        "Database",          "mysql",       False),
+    "postgresql":  ("PostgreSQL",   "Database",          "postgresql",  False),
+    "mongodb":     ("MongoDB",      "Database",          "mongodb",     False),
+    "redis":       ("Redis",        "Database",          "redis",       False),
+    "firebase":    ("Firebase",     "Database",          "firebase",    False),
+    "prisma":      ("Prisma",       "Database",          "prisma",      True),
+    "googlecloud": ("Google Cloud", "DevOps & Cloud",    "googlecloud", False),
+    "docker":      ("Docker",       "DevOps & Cloud",    "docker",      False),
+    "kubernetes":  ("Kubernetes",   "DevOps & Cloud",    "kubernetes",  False),
+    "linux":       ("Linux",        "DevOps & Cloud",    "linux",       False),
+    "git":         ("Git",          "Tools",             "git",         False),
+    "github":      ("GitHub",       "Tools",             "github",      True),
+    "vscode":      ("VS Code",      "Tools",             "vscode",      False),
+    "figma":       ("Figma",        "Tools",             "figma",       False),
+    "postman":     ("Postman",      "Tools",             "postman",     False),
 }
-CATEGORIES = ["Languages", "Frontend", "Backend", "Data Science & ML", "Database", "DevOps & Cloud", "Tools"]
+CATEGORIES = [
+    "Languages", "Frontend", "Backend",
+    "Data Science & ML", "Database", "DevOps & Cloud", "Tools",
+]
 
-# Always shown (your toolbox from the original README). Detected extras are added on top.
+# Always shown (your toolbox from the original README). Detected extras added on top.
 PINNED = [
     "javascript", "typescript", "python", "java", "go",
     "react", "nextjs", "html5", "css3", "tailwindcss", "bootstrap", "vitejs",
@@ -100,40 +104,57 @@ PINNED = [
 ]
 
 LANG_TO_SLUG = {
-    "JavaScript": "javascript", "TypeScript": "typescript", "Python": "python", "Java": "java",
-    "Go": "go", "C": "c", "C++": "cplusplus", "Rust": "rust", "PHP": "php", "Kotlin": "kotlin",
-    "Dart": "dart", "HTML": "html5", "CSS": "css3", "Shell": "bash", "Dockerfile": "docker",
+    "JavaScript": "javascript", "TypeScript": "typescript", "Python": "python",
+    "Java": "java", "Go": "go", "C": "c", "C++": "cplusplus", "Rust": "rust",
+    "PHP": "php", "Kotlin": "kotlin", "Dart": "dart", "HTML": "html5",
+    "CSS": "css3", "Shell": "bash", "Dockerfile": "docker",
     "Jupyter Notebook": "jupyter",
 }
 NPM_MAP = {
-    "react": "react", "next": "nextjs", "express": "express", "tailwindcss": "tailwindcss",
-    "vite": "vitejs", "bootstrap": "bootstrap", "mongoose": "mongodb", "mongodb": "mongodb",
-    "mysql": "mysql", "mysql2": "mysql", "pg": "postgresql", "redis": "redis", "ioredis": "redis",
-    "typescript": "typescript", "firebase": "firebase", "@prisma/client": "prisma",
-    "socket.io": "socketio", "graphql": "graphql",
+    "react": "react", "next": "nextjs", "express": "express",
+    "tailwindcss": "tailwindcss", "vite": "vitejs", "bootstrap": "bootstrap",
+    "mongoose": "mongodb", "mongodb": "mongodb", "mysql": "mysql",
+    "mysql2": "mysql", "pg": "postgresql", "redis": "redis",
+    "ioredis": "redis", "typescript": "typescript", "firebase": "firebase",
+    "@prisma/client": "prisma", "socket.io": "socketio", "graphql": "graphql",
 }
 PY_MAP = {
-    "django": "django", "flask": "flask", "fastapi": "fastapi", "pandas": "pandas", "numpy": "numpy",
-    "scikit-learn": "scikitlearn", "sklearn": "scikitlearn", "matplotlib": "matplotlib",
-    "seaborn": "seaborn", "tensorflow": "tensorflow", "torch": "pytorch", "psycopg2": "postgresql",
-    "psycopg2-binary": "postgresql", "pymongo": "mongodb", "redis": "redis", "mysql-connector-python": "mysql",
-    "pymysql": "mysql",
+    "django": "django", "flask": "flask", "fastapi": "fastapi",
+    "pandas": "pandas", "numpy": "numpy", "scikit-learn": "scikitlearn",
+    "sklearn": "scikitlearn", "matplotlib": "matplotlib", "seaborn": "seaborn",
+    "tensorflow": "tensorflow", "torch": "pytorch", "psycopg2": "postgresql",
+    "psycopg2-binary": "postgresql", "pymongo": "mongodb", "redis": "redis",
+    "mysql-connector-python": "mysql", "pymysql": "mysql",
 }
 TOPIC_ALIAS = {
-    "reactjs": "react", "node": "nodejs", "node-js": "nodejs", "golang": "go", "next-js": "nextjs",
-    "mongo": "mongodb", "postgres": "postgresql", "k8s": "kubernetes", "tailwind": "tailwindcss",
+    "reactjs": "react", "node": "nodejs", "node-js": "nodejs",
+    "golang": "go", "next-js": "nextjs", "mongo": "mongodb",
+    "postgres": "postgresql", "k8s": "kubernetes", "tailwind": "tailwindcss",
     "sklearn": "scikitlearn", "machine-learning": None, "vite": "vitejs",
 }
 LANG_COLORS = {
-    "JavaScript": "#f1e05a", "TypeScript": "#3178c6", "Python": "#3572A5", "Java": "#b07219",
-    "Go": "#00ADD8", "HTML": "#e34c26", "CSS": "#563d7c", "Shell": "#89e051", "C++": "#f34b7d",
-    "C": "#aaaaaa", "Jupyter Notebook": "#DA5B0B", "Rust": "#dea584", "PHP": "#4F5D95",
-    "Kotlin": "#A97BFF", "Dart": "#00B4AB", "Dockerfile": "#384d54", "SCSS": "#c6538c",
+    "JavaScript":     "#f1e05a",
+    "TypeScript":     "#3178c6",
+    "Python":         "#3572A5",
+    "Java":           "#b07219",
+    "Go":             "#00ADD8",
+    "HTML":           "#e34c26",
+    "CSS":            "#563d7c",
+    "Shell":          "#89e051",
+    "C++":            "#f34b7d",
+    "C":              "#aaaaaa",
+    "Jupyter Notebook": "#DA5B0B",
+    "Rust":           "#dea584",
+    "PHP":            "#4F5D95",
+    "Kotlin":         "#A97BFF",
+    "Dart":           "#00B4AB",
+    "Dockerfile":     "#384d54",
+    "SCSS":           "#c6538c",
 }
 
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 # HTTP helpers
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 
 def http(url: str, binary: bool = False):
     headers = {"User-Agent": "profile-readme-updater", "Accept": "application/vnd.github+json"}
@@ -155,9 +176,9 @@ def api(path: str):
         return None
 
 
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 # Data collection
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 
 def fetch_repos() -> list[dict]:
     out: list[dict] = []
@@ -173,7 +194,7 @@ def fetch_repos() -> list[dict]:
 
 def repo_signals(repo: dict) -> tuple[set[str], dict]:
     """Return (slugs detected in repo, language-bytes dict)."""
-    name = repo["name"]
+    name  = repo["name"]
     slugs: set[str] = set()
     langs = api(f"/repos/{USER}/{name}/languages") or {}
     for lang in langs:
@@ -209,7 +230,7 @@ def repo_signals(repo: dict) -> tuple[set[str], dict]:
 
 
 def merged_prs() -> tuple[int, list[dict]]:
-    q = f"author:{USER}+type:pr+is:merged+-user:{USER}"
+    q    = f"author:{USER}+type:pr+is:merged+-user:{USER}"
     data = api(f"/search/issues?q={q}&sort=updated&order=desc&per_page=30") or {}
     return data.get("total_count", 0), data.get("items", [])
 
@@ -234,9 +255,9 @@ def contributed_repo_slugs(full_names: list[str]) -> Counter:
     return c
 
 
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 # SVG building blocks
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 _icon_cache: dict[str, str | None] = {}
 
 
@@ -248,7 +269,7 @@ def icon_uri(slug: str) -> str | None:
     if slug in _icon_cache:
         return _icon_cache[slug]
     folder = CATALOG[slug][2]
-    uri = None
+    uri    = None
     for variant in ("original", "plain"):
         raw = http(f"{DEVICON}{folder}/{folder}-{variant}.svg", binary=True)
         if raw and b"<svg" in raw[:2000]:
@@ -265,7 +286,7 @@ text{font-family:'Fira Code','SFMono-Regular',Consolas,'Liberation Mono',monospa
 .cat{fill:#00ff41;font-size:12.5px;font-weight:600}
 .muted{fill:#8b949e;font-size:10.5px}
 .lbl{fill:#8b949e;font-size:10.5px;text-anchor:middle}
-.tile{fill:#161b22;stroke:#30363d}
+.tile{fill:#161b22;stroke:#30363d;transition:all .3s}
 .tile.live{stroke:#00ff41;animation:glow 2.4s ease-in-out infinite alternate}
 .dot{fill:#00ff41;animation:pulse 1.6s ease-in-out infinite}
 .cursor{fill:#00ff41;animation:blink 1s steps(1) infinite}
@@ -274,6 +295,9 @@ text{font-family:'Fira Code','SFMono-Regular',Consolas,'Liberation Mono',monospa
 .white{filter:brightness(0) invert(1)}
 .big{fill:#00ff41;font-size:30px;font-weight:700}
 .card{fill:#161b22;stroke:#00ff41;stroke-opacity:.4;animation:glow 3s ease-in-out infinite alternate}
+.bar-bg{fill:#161b22}
+.bar-label{fill:#c9d1d9;font-size:12.5px;font-weight:600}
+.bar-pct{font-size:11px;font-weight:600}
 @keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes glow{from{stroke-opacity:.3}to{stroke-opacity:1}}
@@ -294,10 +318,10 @@ def svg_doc(w: int, h: int, body: str, label: str) -> str:
 def tile(slug: str, x: int, y: int, idx: int, repos_using: int) -> str:
     label, _, _, white = CATALOG[slug]
     delay = (idx % 14) * 0.1
-    live = repos_using > 0
-    uri = icon_uri(slug)
+    live  = repos_using > 0
+    uri   = icon_uri(slug)
     if uri:
-        cls = ' class="white"' if white else ""
+        cls   = ' class="white"' if white else ""
         glyph = f'<image href="{uri}" x="{x+12}" y="{y+12}" width="32" height="32"{cls}/>'
     else:
         glyph = f'<text x="{x+28}" y="{y+33}" text-anchor="middle" class="cat">{escape(label[:2])}</text>'
@@ -313,7 +337,7 @@ def tile(slug: str, x: int, y: int, idx: int, repos_using: int) -> str:
 
 def build_tech_svg(slugs: list[str], scores: Counter) -> str:
     W, PAD, T, GAP, ROW = 800, 28, 56, 18, 56 + 34
-    cols = (W - 2 * PAD + GAP) // (T + GAP)
+    cols  = (W - 2 * PAD + GAP) // (T + GAP)
     parts = [
         f'<text class="title" x="{PAD}" y="34">$ ls ~/stack<tspan class="cursor"> ▌</tspan></text>',
         f'<circle class="dot" cx="{W-175}" cy="30" r="3.5"/>'
@@ -336,31 +360,37 @@ def build_tech_svg(slugs: list[str], scores: Counter) -> str:
 
 def build_languages_svg(lang_bytes: Counter) -> str:
     W, PAD = 800, 28
-    total = sum(lang_bytes.values()) or 1
-    top = lang_bytes.most_common(6)
-    parts = [f'<text class="title" x="{PAD}" y="34">$ cloc ~/repos<tspan class="cursor"> ▌</tspan></text>']
-    y = 62
-    bar_x, bar_w = 190, 480
+    total  = sum(lang_bytes.values()) or 1
+    top    = lang_bytes.most_common(8)
+    parts  = [f'<text class="title" x="{PAD}" y="34">$ cloc ~/repos<tspan class="cursor"> ▌</tspan></text>']
+    y      = 62
+    bar_x, bar_w = 200, 460
     for i, (lang, b) in enumerate(top):
-        pct = b / total * 100
-        w = max(4, bar_w * pct / 100 * (100 / max(top[0][1] / total * 100, 1)) * 0.95)
-        color = LANG_COLORS.get(lang, "#00ff41")
+        pct   = b / total * 100
+        fill_w = max(4, round(bar_w * pct / 100, 1))
+        color  = LANG_COLORS.get(lang, "#00ff41")
+        # gradient id per bar
+        gid    = f"g{i}"
         parts.append(
+            f'<defs><linearGradient id="{gid}" x1="0" x2="1" y1="0" y2="0">'
+            f'<stop offset="0%" stop-color="{color}"/>'
+            f'<stop offset="100%" stop-color="{color}" stop-opacity="0.55"/>'
+            f'</linearGradient></defs>'
             f'<g class="enter" style="animation-delay:{i*0.12:.2f}s">'
-            f'<text class="cat" x="{PAD}" y="{y+13}" style="fill:#c9d1d9">{escape(lang)}</text>'
-            f'<rect x="{bar_x}" y="{y}" width="{bar_w}" height="16" rx="8" fill="#161b22"/>'
-            f'<rect x="{bar_x}" y="{y}" width="0" height="16" rx="8" fill="{color}">'
-            f'<animate attributeName="width" from="0" to="{w:.1f}" dur="1.2s" begin="{i*0.12:.2f}s" fill="freeze" '
+            f'<text class="bar-label" x="{PAD}" y="{y+13}">{escape(lang)}</text>'
+            f'<rect class="bar-bg" x="{bar_x}" y="{y}" width="{bar_w}" height="16" rx="8"/>'
+            f'<rect x="{bar_x}" y="{y}" width="0" height="16" rx="8" fill="url(#{gid})">'
+            f'<animate attributeName="width" from="0" to="{fill_w}" dur="1.2s" begin="{i*0.12:.2f}s" fill="freeze" '
             f'calcMode="spline" keySplines="0.2 0.8 0.2 1" keyTimes="0;1"/></rect>'
-            f'<text class="cat" x="{bar_x+bar_w+16}" y="{y+13}" style="fill:{color}">{pct:.1f}%</text></g>'
+            f'<text class="bar-pct" x="{bar_x+bar_w+12}" y="{y+13}" fill="{color}">{pct:.1f}%</text></g>'
         )
-        y += 30
+        y += 32
     return svg_doc(W, y + 12, "".join(parts), "Most used languages across my repositories")
 
 
 def build_stats_svg(stats: list[tuple[str, str]]) -> str:
     W, H, PAD, GAP = 800, 130, 20, 16
-    n = len(stats)
+    n  = len(stats)
     cw = (W - 2 * PAD - GAP * (n - 1)) / n
     parts = []
     for i, (value, label) in enumerate(stats):
@@ -374,24 +404,42 @@ def build_stats_svg(stats: list[tuple[str, str]]) -> str:
     return svg_doc(W, H, "".join(parts), "GitHub stats")
 
 
-def build_social_svg(file_name: str, delay: float) -> str | None:
-    raw = http(f"https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/{file_name}", binary=True)
+# ---------------------------------------------------------------------------
+# Animated social icon SVGs  (hover: bounce + glow ring)
+# ---------------------------------------------------------------------------
+
+def build_social_svg(file_name: str, delay: float, accent: str = "#00ff41") -> str | None:
+    raw = http(
+        f"https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/{file_name}",
+        binary=True,
+    )
     if not raw:
         return None
     css = (
-        "@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}"
-        f".i{{animation:hop 2.4s ease-in-out {delay}s infinite}}"
-        "@media (prefers-reduced-motion:reduce){.i{animation:none}}"
+        # keyframes
+        "@keyframes hop{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.1)}}"
+        f"@keyframes ring{{0%,100%{{opacity:0;r:22}}60%{{opacity:1;r:28}}}}"
+        # idle gentle float
+        f".i{{animation:hop 2.8s ease-in-out {delay:.1f}s infinite;transform-origin:center}}"
+        # glow ring (hidden by default, shown on hover via SVG :hover)
+        f".ring{{fill:none;stroke:{accent};stroke-width:2;opacity:0;r:22;cx:32;cy:44}}"
+        f".wrap:hover .ring{{animation:ring .6s ease-out forwards}}"
+        f".wrap:hover .i{{animation:hop .5s ease-out}}"
+        "@media (prefers-reduced-motion:reduce){.i{animation:none}.ring{display:none}}"
     )
     return (
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" width="64" height="72">'
-        f'<style>{css}</style><image class="i" href="{data_uri(raw)}" x="8" y="12" width="48" height="48"/></svg>'
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" width="64" height="80">'
+        f'<style>{css}</style>'
+        '<g class="wrap">'
+        f'<image class="i" href="{data_uri(raw)}" x="8" y="16" width="48" height="48"/>'
+        '<circle class="ring"/>'
+        '</g></svg>'
     )
 
 
-# ----------------------------------------------------------------------------
-# README block
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# README OSS block
+# ---------------------------------------------------------------------------
 
 def build_oss_markdown(total: int, items: list[dict]) -> str:
     by_repo: Counter = Counter()
@@ -402,15 +450,20 @@ def build_oss_markdown(total: int, items: list[dict]) -> str:
     for repo, n in by_repo.most_common(8):
         badges.append(
             f'<a href="https://github.com/{repo}"><img alt="{repo}" '
-            f'src="https://img.shields.io/github/stars/{repo}?style=for-the-badge&logo=github&label={repo.replace("-", "--")}&color=00ff41&labelColor=0d1117" /></a>'
+            f'src="https://img.shields.io/github/stars/{repo}?style=for-the-badge&logo=github&label={repo.replace("-","--")}&color=00ff41&labelColor=0d1117" /></a>'
         )
     if badges:
         lines += ['<p align="center">', "  " + "\n  ".join(badges), "</p>", ""]
-    lines += [f"#### ✅ Recently merged pull requests ({total} merged in total)", "", "| Project | Pull request | Merged |", "|---|---|---|"]
+    lines += [
+        f"#### ✅ Recently merged pull requests ({total} merged in total)",
+        "",
+        "| Project | Pull request | Merged |",
+        "|---|---|---|",
+    ]
     for it in items[:10]:
-        repo = it["repository_url"].split("/repos/")[1]
-        title = it["title"].replace("|", "\\|")
-        title = title if len(title) <= 70 else title[:67] + "..."
+        repo   = it["repository_url"].split("/repos/")[1]
+        title  = it["title"].replace("|", "\\|")
+        title  = title if len(title) <= 70 else title[:67] + "..."
         merged = ((it.get("pull_request") or {}).get("merged_at") or it.get("closed_at") or "")[:10]
         lines.append(f"| [{repo}](https://github.com/{repo}) | [#{it['number']} {title}]({it['html_url']}) | {merged} |")
     if not items:
@@ -425,7 +478,7 @@ def replace_block(text: str, start: str, end: str, content: str) -> str:
     return pattern.sub(lambda _: f"{start}\n{content}\n{end}", text)
 
 
-# ----------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 def main() -> int:
     repos = fetch_repos()
     if not repos:
@@ -434,7 +487,7 @@ def main() -> int:
     ASSETS.mkdir(exist_ok=True)
     scan = repos[:MAX_REPOS]
 
-    scores: Counter = Counter()
+    scores:    Counter = Counter()
     lang_bytes: Counter = Counter()
     with ThreadPoolExecutor(max_workers=8) as pool:
         for slugs, langs in pool.map(repo_signals, scan):
@@ -455,15 +508,21 @@ def main() -> int:
 
     stars = sum(r.get("stargazers_count", 0) for r in repos)
     stats = [
-        (str(total_merged), "merged PRs (open source)"),
+        (str(total_merged),   "merged PRs (open source)"),
         (str(open_prs_count()), "open PRs"),
-        (str(len(repos)), "public repos"),
-        (str(stars), "stars earned"),
+        (str(len(repos)),     "public repos"),
+        (str(stars),          "stars earned"),
     ]
     (ASSETS / "stats.svg").write_text(build_stats_svg(stats), encoding="utf-8")
 
-    for i, (fname, out) in enumerate([("LinkedIN.svg", "linkedin"), ("Twitter.svg", "twitter"), ("Gmail.svg", "gmail")]):
-        svg = build_social_svg(fname, i * 0.3)
+    # Social icons with hover animation + different accent per icon
+    socials = [
+        ("LinkedIN.svg", "linkedin", 0.0,  "#0077b5"),   # LinkedIn blue
+        ("Twitter.svg",  "twitter",  0.35, "#1d9bf0"),   # Twitter blue
+        ("Gmail.svg",    "gmail",    0.70, "#ea4335"),   # Gmail red
+    ]
+    for fname, out, delay, accent in socials:
+        svg = build_social_svg(fname, delay, accent)
         if svg:
             (ASSETS / f"social-{out}.svg").write_text(svg, encoding="utf-8")
 
@@ -472,7 +531,10 @@ def main() -> int:
         text = replace_block(text, "<!--OSS:START-->", "<!--OSS:END-->", build_oss_markdown(total_merged, items))
         README.write_text(text, encoding="utf-8")
 
-    print(f"repos={len(repos)} merged_ext={total_merged} icons={len(ordered)} detected={sorted(s for s,v in scores.items() if v>0)}")
+    print(
+        f"repos={len(repos)} merged_ext={total_merged} icons={len(ordered)} "
+        f"detected={sorted(s for s, v in scores.items() if v > 0)}"
+    )
     return 0
 
 

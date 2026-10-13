@@ -1,10 +1,10 @@
-
+﻿
 <div align="center">
 <img src="Banner.svg" alt="Dhruv banner" width="800"/>
 </div>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=4000&pause=1000&color=00FF41&center=true&vCenter=true&width=650&lines=Full-Stack%20Development;Data%20Science%20%26%20ML;Database%20Management;Open-Source%20Contributor" alt="Typing introduction" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=4000&pause=1000&color=00FF41&center=true&vCenter=true&width=650&lines=Full-Stack%20Development;Data%20Science%20%26%20ML;Database%20Management;Open-Source%20Contributor;Cloud+%26+DevOps+Enthusiast" alt="Typing introduction" />
 </p>
 
 
@@ -19,106 +19,113 @@
 ## 🔗 Connect with Me
 <p align="center">
   <a href="https://www.linkedin.com/in/dhruv-kumar-singh-a01700364">
-    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/LinkedIN.svg" alt="LinkedIn" width="40" />
-  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="assets/social-linkedin.svg" alt="LinkedIn" width="64" />
+  </a>&nbsp;&nbsp;
   <a href="https://x.com/DhruvKrSingh_07">
-    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/Twitter.svg" alt="Twitter" width="40" />
-  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="assets/social-twitter.svg" alt="Twitter/X" width="64" />
+  </a>&nbsp;&nbsp;
   <a href="mailto:dhruvkumarsingh327@gmail.com">
-    <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/Gmail.svg" alt="Gmail" width="40" />
+    <img src="assets/social-gmail.svg" alt="Gmail" width="64" />
   </a>
 </p>
 
-<!-- <p align="center">
+---
+
+## 📊 GitHub Stats & Activity
+
+<p align="center">
   <a href="https://github.com/Dhruv-Kumar-Singh">
-    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=Dhruv-Kumar-Singh&cache_seconds=7200&layout=compact&theme=dracula&border_radius=10" alt="Dhruv-Kumar-Singh's GitHub Stats" />
+    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=Dhruv-Kumar-Singh&show_icons=true&cache_seconds=3600&theme=dracula&border_radius=10&include_all_commits=true&count_private=true" alt="Dhruv-Kumar-Singh GitHub Stats" />
   </a>
-  <img src="https://streak-stats.demolab.com/?user=Dhruv-Kumar-Singh&theme=dracula&hide_border=true&cache_seconds=86400" alt="Dhruv-Kumar-Singh's GitHub Streak" width="49%" />
+  <a href="https://github.com/Dhruv-Kumar-Singh">
+    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Dhruv-Kumar-Singh&langs_count=8&layout=compact&theme=dracula&border_radius=10&cache_seconds=3600" alt="Top Languages" />
+  </a>
 </p>
-<p align="center">
-  <img src="https://trophy.ryglcloud.net/?username=Dhruv-Kumar-Singh&theme=dracula&no-frame=true&no-bg=true&margin-w=4&cache_seconds=86400" alt="Dhruv Kumar Singh's GitHub Trophies" />
-</p>
-<p align="center">
-  <img height="280em" src="https://github-readme-activity-graph.vercel.app/graph?username=Dhruv-Kumar-Singh&theme=dracula&radius=10" alt="Dhruv-Kumar-Singh's Activity Graph" />
-</p>
-<div align="center">
-  <img src="profile-3d-city.svg" alt="3D City" width="100%" />
-</div> -->
 
+<p align="center">
+  <img src="https://streak-stats.demolab.com/?user=Dhruv-Kumar-Singh&theme=dracula&hide_border=false&border_radius=10&cache_seconds=3600" alt="Dhruv-Kumar-Singh GitHub Streak" width="60%" />
+</p>
+
+### 🔥 Contribution Activity
+<p align="center">
+  <img height="280em" src="https://github-readme-activity-graph.vercel.app/graph?username=Dhruv-Kumar-Singh&theme=dracula&radius=10&hide_border=false&area=true" alt="Dhruv-Kumar-Singh Activity Graph" />
+</p>
+
+### 🏆 GitHub Trophies
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=Dhruv-Kumar-Singh&theme=dracula&no-frame=false&no-bg=true&margin-w=6&row=1&column=7&cache_seconds=3600" alt="Dhruv Kumar Singh GitHub Trophies" />
+</p>
+
+### 📅 Real-Time Commit Graph
+<p align="center">
+  <img src="https://ghchart.rshah.org/00FF41/Dhruv-Kumar-Singh" alt="Dhruv-Kumar-Singh GitHub commit chart" />
+</p>
+
+---
 
 ## 🛠️ Languages & Tools
 
-<h3 align="center">Programming Languages</h3>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="TypeScript" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="Java" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg" alt="Go" width="40" />
+<img src="assets/tech-stack.svg" alt="Animated tech stack" width="100%" />
 
+### 📈 Language Distribution
+<img src="assets/languages.svg" alt="Language distribution" width="100%" />
+
+### 📋 Live Stats
+<img src="assets/stats.svg" alt="GitHub stats" width="100%" />
+
+---
+
+## 🚀 Featured Projects
+
+<p align="center">
+  <a href="https://github.com/Dhruv-Kumar-Singh/Graphity">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Dhruv-Kumar-Singh&repo=Graphity&theme=dracula&border_radius=10&cache_seconds=3600" alt="Graphity" />
+  </a>
+  <a href="https://github.com/Dhruv-Kumar-Singh/AgentVerse">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Dhruv-Kumar-Singh&repo=AgentVerse&theme=dracula&border_radius=10&cache_seconds=3600" alt="AgentVerse" />
+  </a>
 </p>
-
-<h3 align="center">Frontend</h3>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" alt="Next.js" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="HTML5" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" alt="CSS3" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain.svg" alt="Bootstrap" width="40" />
-
-</p>
-
-<h3 align="center">Backend</h3>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" alt="Node.js" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" alt="Express.js" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="Django" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://www.vectorlogo.zone/logos/palletsprojects_flask/palletsprojects_flask-ar21.svg" alt="Flask" width="40" />
-
-</p>
-
-<h3 align="center">Database</h3>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="MySQL" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original.svg" alt="Redis" width="40" />
-
-</p>
-
-<h3 align="center">DevOps & Cloud</h3>
-<p align="center">
-  <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="Google Cloud" width="40" />
-
-</p>
-
-<h3 align="center">Tools</h3>
-<p align="center">
-  <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg" alt="VS Code" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" width="40" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://www.vectorlogo.zone/logos/vitejsdev/vitejsdev-icon.svg" alt="Vite" width="40" />
-
-</p>
-
-<p align="center">
-  <a href="https://github.com/Dhruv-Kumar-Singh">
-    <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Dhruv-Kumar-Singh&langs_count=8&layout=compact&theme=dracula&border_radius=10" alt="Top Languages" />
+  <a href="https://github.com/Dhruv-Kumar-Singh/AgenticHR">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Dhruv-Kumar-Singh&repo=AgenticHR&theme=dracula&border_radius=10&cache_seconds=3600" alt="AgenticHR" />
+  </a>
+  <a href="https://github.com/Dhruv-Kumar-Singh/FlarexRiseIn">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Dhruv-Kumar-Singh&repo=FlarexRiseIn&theme=dracula&border_radius=10&cache_seconds=3600" alt="FlarexRiseIn" />
   </a>
 </p>
 
-![Top language](https://stats.pphat.top/languages?username=Dhruv-Kumar-Singh)
-<br/>
+---
 
+<!--OSS:START-->
+#### 🤝 Projects I've contributed to
 
+<p align="center">
+  <a href="https://github.com/ipsitapp8/OJT"><img alt="ipsitapp8/OJT" src="https://img.shields.io/github/stars/ipsitapp8/OJT?style=for-the-badge&logo=github&label=ipsitapp8/OJT&color=00ff41&labelColor=0d1117" /></a>
+  <a href="https://github.com/kubernetes-sigs/headlamp"><img alt="kubernetes-sigs/headlamp" src="https://img.shields.io/github/stars/kubernetes-sigs/headlamp?style=for-the-badge&logo=github&label=kubernetes--sigs/headlamp&color=00ff41&labelColor=0d1117" /></a>
+</p>
+
+#### ✅ Recently merged pull requests (4 merged in total)
+
+| Project | Pull request | Merged |
+|---|---|---|
+| [kubernetes-sigs/headlamp](https://github.com/kubernetes-sigs/headlamp) | [#5616 frontend : Resource Map: NodeGlance preview clipped/hidden behind n...](https://github.com/kubernetes-sigs/headlamp/pull/5616) | 2026-05-15 |
+| [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#3 Added requirements.txt](https://github.com/ipsitapp8/OJT/pull/3) | 2025-12-04 |
+| [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#2 Added all the files of the updated project](https://github.com/ipsitapp8/OJT/pull/2) | 2025-12-04 |
+| [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#1 Deleted all the old files that were added previously added](https://github.com/ipsitapp8/OJT/pull/1) | 2025-12-04 |
+
+<sub>Auto-updated 2026-10-13 11:15 UTC</sub>
+<!--OSS:END-->
+
+---
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/czl9707/gh-space-shooter/main/example.gif" alt="Space shooter contribution graph" />
 </p>
 
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=Dhruv-Kumar-Singh&style=for-the-badge&color=00FF41&label=PROFILE+VIEWS" alt="Profile Views" />
+</p>
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" alt="Bottom Line" width="100%" />
 </div>
-
