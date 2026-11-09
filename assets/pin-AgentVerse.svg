@@ -55,7 +55,7 @@
   <rect class="badge-bg-AgentVerse" x="295" y="18" width="78" height="18" rx="9"/>
   <circle class="pulse-dot-AgentVerse" cx="305" cy="27" r="3.2"/>
   <text class="badge-text-AgentVerse" x="339" y="30.5">Nov 2025</text>
-  <text class="desc-AgentVerse" x="20" y="58">Study buddy app that explains, quizzes and</text>
+  <text class="desc-AgentVerse" x="20" y="58">Study buddy app that explains, Quizzes and</text>
   <text class="desc-AgentVerse" x="20" y="75">schedules to execute real tasks.</text>
   <circle cx="24" cy="99" r="4.5" fill="#3178c6"/>
   <text class="meta-AgentVerse" x="34" y="103">TypeScript</text>
