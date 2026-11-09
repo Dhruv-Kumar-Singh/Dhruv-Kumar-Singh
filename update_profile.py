@@ -949,6 +949,202 @@ def replace_block(text: str, start: str, end: str, content: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Dynamic Active Projects Pins (Orange & Black container base)
+# ---------------------------------------------------------------------------
+
+KNOWN_DESCRIPTIONS = {
+    "Praxis": "AI interview coach for practicing technical interviews out loud with instant feedback.",
+    "Graphity": "Markdown knowledge graph builder that turns notes into a navigable visual web.",
+    "FlarexRiseIn": "FitnessScore smart contract on Flare Network for decentralized fitness verification.",
+    "AgentVerse": "Study buddy app that explains, quizzes and schedules to execute real tasks.",
+    "Voice-Agent": "Interactive real-time voice agent application.",
+}
+
+DEFAULT_FALLBACK_REPOS = [
+    {
+        "name": "Praxis",
+        "description": "AI interview coach for practicing technical interviews out loud with instant feedback.",
+        "language": "JavaScript",
+        "stargazers_count": 1,
+        "forks_count": 0,
+        "pushed_at": "2026-10-13T17:32:06Z",
+    },
+    {
+        "name": "Graphity",
+        "description": "Markdown knowledge graph builder that turns notes into a navigable visual web.",
+        "language": "HTML",
+        "stargazers_count": 1,
+        "forks_count": 0,
+        "pushed_at": "2026-07-13T09:06:37Z",
+    },
+    {
+        "name": "FlarexRiseIn",
+        "description": "FitnessScore smart contract on Flare Network for decentralized fitness verification.",
+        "language": "TypeScript",
+        "stargazers_count": 0,
+        "forks_count": 0,
+        "pushed_at": "2025-11-28T08:20:26Z",
+    },
+    {
+        "name": "AgentVerse",
+        "description": "Study buddy app that explains, quizzes and schedules to execute real tasks.",
+        "language": "TypeScript",
+        "stargazers_count": 0,
+        "forks_count": 0,
+        "pushed_at": "2025-11-08T23:58:38Z",
+    },
+]
+
+
+def wrap_text(text: str, max_chars: int = 44) -> tuple[str, str]:
+    words = text.split()
+    line1, line2 = [], []
+    cur_len = 0
+    for w in words:
+        if cur_len + len(w) + (1 if line1 else 0) <= max_chars:
+            line1.append(w)
+            cur_len += len(w) + (1 if len(line1) > 1 else 0)
+        else:
+            line2.append(w)
+    l1 = " ".join(line1)
+    l2 = " ".join(line2)
+    if len(l2) > max_chars:
+        l2 = l2[:max_chars - 3].rstrip() + "..."
+    return l1, l2
+
+
+def format_date(iso_str: str | None) -> str:
+    if not iso_str:
+        return "Active"
+    try:
+        dt = datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
+        return dt.strftime("%b %Y")
+    except Exception:
+        return "Active"
+
+
+def get_active_repos(repos: list[dict], limit: int = 4) -> list[dict]:
+    # Exclude profile README repo itself, forks, and archived
+    candidates = [
+        r for r in repos
+        if r.get("name") != USER
+        and not r.get("fork")
+        and not r.get("archived")
+    ]
+    # Prefer repos with actual content (size > 0 or language present)
+    with_content = [r for r in candidates if r.get("size", 0) > 0 or r.get("language")]
+    if len(with_content) >= limit:
+        candidates = with_content
+    # Sort by pushed_at descending (most recently updated/active first)
+    candidates.sort(key=lambda r: r.get("pushed_at") or r.get("updated_at") or "", reverse=True)
+    return candidates[:limit] if candidates else DEFAULT_FALLBACK_REPOS
+
+
+def build_project_pin_svg(repo: dict) -> str:
+    name = repo["name"]
+    desc_raw = repo.get("description") or KNOWN_DESCRIPTIONS.get(name) or f"Active open-source repository by {USER}."
+    desc1, desc2 = wrap_text(desc_raw, 44)
+    lang = repo.get("language") or "Code"
+    lang_color = LANG_COLORS.get(lang, "#ff7700")
+    stars = repo.get("stargazers_count", 0)
+    forks = repo.get("forks_count", 0)
+    updated_str = format_date(repo.get("pushed_at") or repo.get("updated_at"))
+
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 120" width="390" height="120" role="img" aria-label="{escape(name)}">\n'
+        f'  <defs>\n'
+        f'    <!-- Orange & Black Container Base -->\n'
+        f'    <linearGradient id="card-bg-{name}" x1="0%" y1="0%" x2="100%" y2="100%">\n'
+        f'      <stop offset="0%" stop-color="#0a0a0c"/>\n'
+        f'      <stop offset="50%" stop-color="#140d06"/>\n'
+        f'      <stop offset="100%" stop-color="#070503"/>\n'
+        f'    </linearGradient>\n'
+        f'    <linearGradient id="orange-glow-{name}" x1="0%" y1="0%" x2="100%" y2="0%">\n'
+        f'      <stop offset="0%" stop-color="#ff5500"/>\n'
+        f'      <stop offset="50%" stop-color="#ff8c00"/>\n'
+        f'      <stop offset="100%" stop-color="#ff5500" stop-opacity="0.2"/>\n'
+        f'    </linearGradient>\n'
+        f'    <radialGradient id="ambient-{name}" cx="90%" cy="10%" r="60%">\n'
+        f'      <stop offset="0%" stop-color="#ff6a00" stop-opacity="0.12"/>\n'
+        f'      <stop offset="100%" stop-color="#ff6a00" stop-opacity="0"/>\n'
+        f'    </radialGradient>\n'
+        f'    <style>\n'
+        f'      * {{ box-sizing: border-box; }}\n'
+        f'      .card-{name} {{ fill: url(#card-bg-{name}); stroke: #ff6a00; stroke-width: 1.2; rx: 10px; animation: borderGlow-{name} 3s ease-in-out infinite alternate; }}\n'
+        f'      .ambient-glow-{name} {{ fill: url(#ambient-{name}); rx: 10px; }}\n'
+        f'      .top-line-{name} {{ stroke: url(#orange-glow-{name}); stroke-width: 2.5; stroke-linecap: round; }}\n'
+        f'      .repo-icon-{name} {{ fill: #ff7700; }}\n'
+        f'      .title-{name} {{ font-family: Consolas, "SFMono-Regular", "Liberation Mono", Menlo, monospace; font-size: 14.5px; font-weight: 700; fill: #ff8533; letter-spacing: -0.2px; }}\n'
+        f'      .badge-bg-{name} {{ fill: #1c1005; stroke: #ff7700; stroke-width: 0.8; stroke-opacity: 0.75; }}\n'
+        f'      .badge-text-{name} {{ font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 9.5px; font-weight: 600; fill: #ffa24c; text-anchor: middle; }}\n'
+        f'      .desc-{name} {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11.5px; fill: #c9d1d9; }}\n'
+        f'      .meta-{name} {{ font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 11px; fill: #8b949e; }}\n'
+        f'      .meta-val-{name} {{ font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 11px; font-weight: 600; fill: #e6edf3; }}\n'
+        f'      .star-icon-{name} {{ fill: #ffb703; }}\n'
+        f'      .fork-icon-{name} {{ fill: #ff7700; }}\n'
+        f'      .pulse-dot-{name} {{ fill: #ff6a00; animation: pulse-{name} 1.8s ease-in-out infinite; }}\n'
+        f'      @keyframes borderGlow-{name} {{\n'
+        f'        0% {{ stroke: #ff5500; stroke-opacity: .45; }}\n'
+        f'        50% {{ stroke: #ff9900; stroke-opacity: .95; }}\n'
+        f'        100% {{ stroke: #ff5500; stroke-opacity: .45; }}\n'
+        f'      }}\n'
+        f'      @keyframes pulse-{name} {{\n'
+        f'        0%, 100% {{ opacity: 1; transform: scale(1); }}\n'
+        f'        50% {{ opacity: 0.3; transform: scale(0.85); }}\n'
+        f'      }}\n'
+        f'      @media (prefers-reduced-motion: reduce) {{ .card-{name}, .pulse-dot-{name} {{ animation: none !important; }} }}\n'
+        f'    </style>\n'
+        f'  </defs>\n'
+        f'  <rect class="card-{name}" x="1" y="1" width="388" height="118"/>\n'
+        f'  <rect class="ambient-glow-{name}" x="1" y="1" width="388" height="118"/>\n'
+        f'  <line class="top-line-{name}" x1="14" y1="2" x2="150" y2="2"/>\n'
+        f'  <g transform="translate(18, 19)">\n'
+        f'    <svg class="repo-icon-{name}" viewBox="0 0 16 16" width="16" height="16">\n'
+        f'      <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8V1.5zM5 12.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-5.5a.25.25 0 0 1-.25-.25v-.5z"/>\n'
+        f'    </svg>\n'
+        f'  </g>\n'
+        f'  <text class="title-{name}" x="42" y="32">{escape(name)}</text>\n'
+        f'  <!-- Live Activity Badge -->\n'
+        f'  <rect class="badge-bg-{name}" x="295" y="18" width="78" height="18" rx="9"/>\n'
+        f'  <circle class="pulse-dot-{name}" cx="305" cy="27" r="3.2"/>\n'
+        f'  <text class="badge-text-{name}" x="339" y="30.5">{escape(updated_str)}</text>\n'
+        f'  <text class="desc-{name}" x="20" y="58">{escape(desc1)}</text>\n'
+        f'  <text class="desc-{name}" x="20" y="75">{escape(desc2)}</text>\n'
+        f'  <circle cx="24" cy="99" r="4.5" fill="{lang_color}"/>\n'
+        f'  <text class="meta-{name}" x="34" y="103">{escape(lang)}</text>\n'
+        f'  <g transform="translate(130, 91)">\n'
+        f'    <svg class="star-icon-{name}" viewBox="0 0 16 16" width="14" height="14">\n'
+        f'      <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/>\n'
+        f'    </svg>\n'
+        f'  </g>\n'
+        f'  <text class="meta-val-{name}" x="148" y="103">{stars}</text>\n'
+        f'  <g transform="translate(180, 91)">\n'
+        f'    <svg class="fork-icon-{name}" viewBox="0 0 16 16" width="14" height="14">\n'
+        f'      <path d="M5 3.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm0 2.122a2.25 2.25 0 1 0-1.5 0v.878A2.25 2.25 0 0 0 5.75 8.5h1.5v2.128a2.251 2.251 0 1 0 1.5 0V8.5h1.5a2.25 2.25 0 0 0 2.25-2.25v-.878a2.25 2.25 0 1 0-1.5 0v.878a.75.75 0 0 1-.75.75h-4.5A.75.75 0 0 1 5 6.25v-.878zm3.75 7.378a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm3-8.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z"/>\n'
+        f'    </svg>\n'
+        f'  </g>\n'
+        f'  <text class="meta-val-{name}" x="198" y="103">{forks}</text>\n'
+        f'</svg>'
+    )
+
+
+def build_projects_markdown(active_repos: list[dict]) -> str:
+    lines = []
+    pairs = [active_repos[i:i+2] for i in range(0, len(active_repos), 2)]
+    for pair in pairs:
+        lines.append('<p align="center">')
+        for r in pair:
+            name = r["name"]
+            lines.append(f'  <a href="https://github.com/{USER}/{name}">')
+            lines.append(f'    <img src="https://raw.githubusercontent.com/{USER}/{USER}/main/assets/pin-{name}.svg" alt="{name}" />')
+            lines.append('  </a>')
+        lines.append('</p>')
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    lines.append(f'<sub>Auto-synced active repositories: {stamp}</sub>')
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -1020,11 +1216,19 @@ def main() -> int:
         if svg:
             (ASSETS / f"social-{out}.svg").write_text(svg, encoding="utf-8")
 
-    # --- README OSS block ---
+    # --- dynamic active project pins (orange & black base) ---
+    active_repos = get_active_repos(repos, limit=4)
+    for repo in active_repos:
+        pin_svg = build_project_pin_svg(repo)
+        (ASSETS / f"pin-{repo['name']}.svg").write_text(pin_svg, encoding="utf-8")
+
+    # --- README dynamic blocks ---
     if README.exists():
         text = README.read_text(encoding="utf-8")
         text = replace_block(text, "<!--OSS:START-->", "<!--OSS:END-->",
                              build_oss_markdown(total_merged, items))
+        text = replace_block(text, "<!--PROJECTS:START-->", "<!--PROJECTS:END-->",
+                             build_projects_markdown(active_repos))
         README.write_text(text, encoding="utf-8")
 
     print(

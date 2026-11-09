@@ -64,22 +64,25 @@
 
 ## 🚀 Featured Projects
 
+<!--PROJECTS:START-->
 <p align="center">
+  <a href="https://github.com/Dhruv-Kumar-Singh/Praxis">
+    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-Praxis.svg" alt="Praxis" />
+  </a>
   <a href="https://github.com/Dhruv-Kumar-Singh/Graphity">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Dhruv-Kumar-Singh&repo=Graphity&theme=dracula&border_radius=10&cache_seconds=3600" alt="Graphity" />
+    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-Graphity.svg" alt="Graphity" />
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/Dhruv-Kumar-Singh/FlarexRiseIn">
+    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-FlarexRiseIn.svg" alt="FlarexRiseIn" />
   </a>
   <a href="https://github.com/Dhruv-Kumar-Singh/AgentVerse">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Dhruv-Kumar-Singh&repo=AgentVerse&theme=dracula&border_radius=10&cache_seconds=3600" alt="AgentVerse" />
+    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-AgentVerse.svg" alt="AgentVerse" />
   </a>
 </p>
-<p align="center">
-  <a href="https://github.com/Dhruv-Kumar-Singh/AgenticHR">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Dhruv-Kumar-Singh&repo=AgenticHR&theme=dracula&border_radius=10&cache_seconds=3600" alt="AgenticHR" />
-  </a>
-  <a href="https://github.com/Dhruv-Kumar-Singh/FlarexRiseIn">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Dhruv-Kumar-Singh&repo=FlarexRiseIn&theme=dracula&border_radius=10&cache_seconds=3600" alt="FlarexRiseIn" />
-  </a>
-</p>
+<sub>Auto-synced active repositories: 2026-11-09 13:26 UTC</sub>
+<!--PROJECTS:END-->
 
 ---
 
