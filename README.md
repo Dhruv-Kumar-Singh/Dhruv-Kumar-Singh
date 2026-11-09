@@ -92,17 +92,18 @@
   <a href="https://github.com/kubernetes-sigs/headlamp"><img alt="kubernetes-sigs/headlamp" src="https://img.shields.io/github/stars/kubernetes-sigs/headlamp?style=for-the-badge&logo=github&label=kubernetes--sigs/headlamp&color=00ff41&labelColor=0d1117" /></a>
 </p>
 
-#### ✅ Recently merged pull requests (5 merged in total)
+#### ✅ Recently merged pull requests (6 merged in total)
 
 | Project | Pull request | Merged |
 |---|---|---|
+| [sktime/sktime](https://github.com/sktime/sktime) | [#11731 [BUG] Fix TheilU2 confusing broadcast error when len(y_train) < sp](https://github.com/sktime/sktime/pull/11731) | 2026-11-08 |
 | [sktime/sktime](https://github.com/sktime/sktime) | [#11690 [BUG] Fix imputer._init_ method in "forecaster" equality check](https://github.com/sktime/sktime/pull/11690) | 2026-11-06 |
 | [kubernetes-sigs/headlamp](https://github.com/kubernetes-sigs/headlamp) | [#5616 frontend : Resource Map: NodeGlance preview clipped/hidden behind n...](https://github.com/kubernetes-sigs/headlamp/pull/5616) | 2026-05-15 |
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#3 Added requirements.txt](https://github.com/ipsitapp8/OJT/pull/3) | 2025-12-04 |
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#2 Added all the files of the updated project](https://github.com/ipsitapp8/OJT/pull/2) | 2025-12-04 |
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#1 Deleted all the old files that were added previously added](https://github.com/ipsitapp8/OJT/pull/1) | 2025-12-04 |
 
-<sub>Auto-updated 2026-11-08 21:54 UTC</sub>
+<sub>Auto-updated 2026-11-09 05:46 UTC</sub>
 <!--OSS:END-->
 
 ---
