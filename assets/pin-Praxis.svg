@@ -54,7 +54,7 @@
   <!-- Live Activity Badge -->
   <rect class="badge-bg-Praxis" x="295" y="18" width="78" height="18" rx="9"/>
   <circle class="pulse-dot-Praxis" cx="305" cy="27" r="3.2"/>
-  <text class="badge-text-Praxis" x="339" y="30.5">Oct 2026</text>
+  <text class="badge-text-Praxis" x="339" y="30.5">Nov 2026</text>
   <text class="desc-Praxis" x="20" y="58">AI interview coach for practicing technical</text>
   <text class="desc-Praxis" x="20" y="75">interviews out loud with instant feedback.</text>
   <circle cx="24" cy="99" r="4.5" fill="#f1e05a"/>
@@ -70,5 +70,5 @@
       <path d="M5 3.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm0 2.122a2.25 2.25 0 1 0-1.5 0v.878A2.25 2.25 0 0 0 5.75 8.5h1.5v2.128a2.251 2.251 0 1 0 1.5 0V8.5h1.5a2.25 2.25 0 0 0 2.25-2.25v-.878a2.25 2.25 0 1 0-1.5 0v.878a.75.75 0 0 1-.75.75h-4.5A.75.75 0 0 1 5 6.25v-.878zm3.75 7.378a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm3-8.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z"/>
     </svg>
   </g>
-  <text class="meta-val-Praxis" x="198" y="103">0</text>
+  <text class="meta-val-Praxis" x="198" y="103">1</text>
 </svg>
