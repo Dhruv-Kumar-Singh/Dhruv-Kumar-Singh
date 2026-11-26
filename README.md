@@ -69,19 +69,19 @@
   <a href="https://github.com/Dhruv-Kumar-Singh/Praxis">
     <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-Praxis.svg" alt="Praxis" />
   </a>
-  <a href="https://github.com/Dhruv-Kumar-Singh/pgmpy">
-    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-pgmpy.svg" alt="pgmpy" />
-  </a>
-</p>
-<p align="center">
   <a href="https://github.com/Dhruv-Kumar-Singh/Graphity">
     <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-Graphity.svg" alt="Graphity" />
   </a>
+</p>
+<p align="center">
   <a href="https://github.com/Dhruv-Kumar-Singh/FlarexRiseIn">
     <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-FlarexRiseIn.svg" alt="FlarexRiseIn" />
   </a>
+  <a href="https://github.com/Dhruv-Kumar-Singh/AgentVerse">
+    <img src="https://raw.githubusercontent.com/Dhruv-Kumar-Singh/Dhruv-Kumar-Singh/main/assets/pin-AgentVerse.svg" alt="AgentVerse" />
+  </a>
 </p>
-<sub>Auto-synced active repositories: 2026-11-25 21:29 UTC</sub>
+<sub>Auto-synced active repositories: 2026-11-26 07:51 UTC</sub>
 <!--PROJECTS:END-->
 
 ---
@@ -106,7 +106,7 @@
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#2 Added all the files of the updated project](https://github.com/ipsitapp8/OJT/pull/2) | 2025-12-04 |
 | [ipsitapp8/OJT](https://github.com/ipsitapp8/OJT) | [#1 Deleted all the old files that were added previously added](https://github.com/ipsitapp8/OJT/pull/1) | 2025-12-04 |
 
-<sub>Auto-updated 2026-11-25 21:29 UTC</sub>
+<sub>Auto-updated 2026-11-26 07:51 UTC</sub>
 <!--OSS:END-->
 
 ---
